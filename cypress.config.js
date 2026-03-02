@@ -1,11 +1,9 @@
-const { defineConfig } = require("cypress");
+import { defineConfig } from "cypress";
 
-module.exports = defineConfig({
+export default defineConfig({
   e2e: {
-    baseUrl: "https://example.cypress.io",
-    viewportWidth: 1280,
-    viewportHeight: 720,
-    video: false,
-    screenshotOnRunFailure: true,
+    baseUrl: "https://qauto.forstudy.space",
+    env: {
+    },
   },
 });
