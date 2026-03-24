@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "cy:open": "cypress open",
-  "cy:run": "cypress run"
-},
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+
+    "cy:open:qauto": "cypress open --config-file cypress.config.qauto.js",
+    "cy:open:qauto2": "cypress open --config-file cypress.config.qauto2.js",
+
+    "cy:run:qauto": "cypress run --config-file cypress.config.qauto.js",
+    "cy:run:qauto2": "cypress run --config-file cypress.config.qauto2.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Innen02innen/cypress-practice.git"
@@ -19,6 +25,9 @@
   "homepage": "https://github.com/Innen02innen/cypress-practice#readme",
   "description": "",
   "devDependencies": {
-    "cypress": "^15.10.0"
+    "cypress": "^15.10.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2"
   }
 }
