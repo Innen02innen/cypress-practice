@@ -44,3 +44,43 @@ Cypress.Commands.add("openRegistrationModal", () => {
 // Check that we are definitely in Registration
   cy.contains(".modal-title", "Registration").should("be.visible");
 });
+
+
+// API sign in and save sid cookie
+Cypress.Commands.add("apiLogin", (email, password) => {
+  return cy.request({
+    method: "POST",
+    url: "/api/auth/signin",
+    body: {
+      email,
+      password,
+      remember: false,
+    },
+  }).then((response) => {
+    expect(response.status).to.eq(200);
+
+    return cy.setCookie("sid", response.body.data.sid).then(() => response);
+  });
+});
+
+// Create car via API
+Cypress.Commands.add("createCarByApi", ({ carBrandId, carModelId, mileage }) => {
+  return cy.request({
+    method: "POST",
+    url: "/api/cars",
+    body: {
+      carBrandId,
+      carModelId,
+      mileage,
+    },
+  });
+});
+
+// Delete car via API
+Cypress.Commands.add("deleteCarByApi", (carId) => {
+  return cy.request({
+    method: "DELETE",
+    url: `/api/cars/${carId}`,
+    failOnStatusCode: false,
+  });
+});
